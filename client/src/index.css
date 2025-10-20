@@ -1,8 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Optional: tiny custom tweak so you can confirm Tailwind is active */
 body {
   @apply bg-gray-100 text-gray-800;
 }
