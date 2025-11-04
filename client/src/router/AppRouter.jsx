@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import LoginPage from "../pages/LoginPage";
-import LabTechDashboard from "../pages/LabTechDashboard";
+import LabTechDashboard from "../pages/LabtechDashboard";
 import PhysicianDashboard from "../pages/PhysicianDashboard";
 import PatientPortal from "../pages/PatientPortal";
 import NotFound from "../pages/NotFound";
