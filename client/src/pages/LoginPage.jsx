@@ -49,16 +49,62 @@ export default function LoginPage() {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    
+    // Validation
+    if (!loginData.username.trim()) {
+      alert("Please enter your username or email");
+      return;
+    }
+    if (!loginData.password.trim()) {
+      alert("Please enter your password");
+      return;
+    }
+    
     login({ username: loginData.username, role: "physician" });
     navigate("/physician");
   };
 
   const handleSignUp = (e) => {
     e.preventDefault();
+    
+    // Validation
+    if (!signUpData.fullName.trim()) {
+      alert("Please enter your full name");
+      return;
+    }
+    if (!signUpData.email.trim()) {
+      alert("Please enter your email address");
+      return;
+    }
+    if (!signUpData.password.trim()) {
+      alert("Please enter a password");
+      return;
+    }
+    if (signUpData.password.length < 6) {
+      alert("Password must be at least 6 characters long");
+      return;
+    }
     if (signUpData.password !== signUpData.confirmPassword) {
       alert("Passwords don't match!");
       return;
     }
+    if (!signUpData.phone.trim()) {
+      alert("Please enter your phone number");
+      return;
+    }
+    if (!signUpData.specialty.trim()) {
+      alert("Please enter your specialty");
+      return;
+    }
+    if (!signUpData.facilityName.trim()) {
+      alert("Please enter your facility name");
+      return;
+    }
+    if (!signUpData.city.trim() || !signUpData.state.trim() || !signUpData.zip.trim()) {
+      alert("Please complete your address information");
+      return;
+    }
+    
     // Handle sign up logic here
     console.log("Sign up data:", signUpData);
     alert("Account created successfully!");
