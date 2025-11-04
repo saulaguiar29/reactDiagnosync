@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   FileText,
   Clock,
@@ -19,6 +20,7 @@ import {
 } from "lucide-react";
 
 const PhysicianDashboard = () => {
+  const navigate = useNavigate();
   const [selectedCase, setSelectedCase] = useState(null);
   const [activeTab, setActiveTab] = useState("findings");
   const [filterPriority, setFilterPriority] = useState("all");
@@ -195,9 +197,13 @@ const PhysicianDashboard = () => {
                 </p>
                 <p className="text-xs text-gray-500">Internal Medicine</p>
               </div>
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+              <button
+                onClick={() => navigate("/profile")}
+                className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform cursor-pointer"
+                title="View Profile"
+              >
                 <User className="w-6 h-6 text-white" />
-              </div>
+              </button>
             </div>
           </div>
         </div>

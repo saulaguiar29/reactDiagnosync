@@ -5,6 +5,7 @@ import LoginPage from "../pages/LoginPage";
 import LabTechDashboard from "../pages/LabtechDashboard";
 import PhysicianDashboard from "../pages/PhysicianDashboard";
 import PatientPortal from "../pages/PatientPortal";
+import ProfilePage from "../pages/ProfilePage";
 import NotFound from "../pages/NotFound";
 
 export default function AppRouter() {
@@ -19,6 +20,7 @@ export default function AppRouter() {
             <Route path="/labtech" element={<LabTechDashboard />} />
             <Route path="/physician" element={<PhysicianDashboard />} />
             <Route path="/patient" element={<PatientPortal />} />
+            <Route path="/profile" element={<ProfilePage />} />
           </>
         )}
         <Route path="*" element={<NotFound />} />
