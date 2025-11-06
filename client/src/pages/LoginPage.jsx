@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-import { Box, Button, TextField, Typography, MenuItem } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
@@ -111,17 +110,64 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-yellow-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-white flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        {/* Logo/Title Section */}
+        {/* Logo Section */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-600 rounded-full mb-4">
-            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+          <div className="flex justify-center mb-6">
+            <div className="w-full max-w-md">
+              <svg 
+                viewBox="0 0 800 257" 
+                className="w-full h-auto"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {/* Circuit lines on left */}
+                <g stroke="#14B8A6" strokeWidth="3" fill="none">
+                  <line x1="207" y1="128" x2="257" y2="128" />
+                  <circle cx="207" cy="128" r="4" fill="#14B8A6" />
+                  <circle cx="220" cy="115" r="4" fill="#14B8A6" />
+                  <circle cx="220" cy="141" r="4" fill="#14B8A6" />
+                </g>
+                
+                {/* Waveform */}
+                <path 
+                  d="M 250 128 L 270 128 L 280 108 L 290 148 L 300 128 L 320 128" 
+                  stroke="#06B6D4" 
+                  strokeWidth="3" 
+                  fill="none"
+                />
+                
+                {/* Circular tech element */}
+                <g stroke="#14B8A6" strokeWidth="2" fill="none">
+                  <circle cx="350" cy="128" r="60" />
+                  <circle cx="350" cy="128" r="50" />
+                  <circle cx="350" cy="128" r="40" />
+                  <path d="M 350 128 L 385 128" stroke="#14B8A6" strokeWidth="3"/>
+                </g>
+                
+                {/* Circuit lines on right */}
+                <g stroke="#14B8A6" strokeWidth="3" fill="none">
+                  <line x1="410" y1="128" x2="460" y2="128" />
+                  <circle cx="430" cy="115" r="4" fill="#14B8A6" />
+                  <circle cx="430" cy="141" r="4" fill="#14B8A6" />
+                  <circle cx="460" cy="128" r="4" fill="#14B8A6" />
+                </g>
+                
+                {/* DiaPort Text */}
+                <text 
+                  x="500" 
+                  y="160" 
+                  fontFamily="Arial, sans-serif" 
+                  fontSize="72" 
+                  fontWeight="bold" 
+                  fill="#4B5563"
+                >
+                  DiaPort
+                </text>
+              </svg>
+            </div>
           </div>
-          <h1 className="text-3xl font-bold text-gray-800">Diagnosync</h1>
-          <p className="text-gray-500 mt-2">
+          <p className="text-gray-600 mt-2 text-lg font-medium">
             {isSignUp ? "Create your account" : "Sign in to your account"}
           </p>
         </div>
@@ -133,7 +179,7 @@ export default function LoginPage() {
             onClick={() => setIsSignUp(false)}
             className={`flex-1 py-2 px-4 rounded-lg font-medium transition-colors ${
               !isSignUp
-                ? "bg-indigo-600 text-white"
+                ? "bg-gradient-to-r from-teal-500 to-cyan-500 text-white"
                 : "bg-gray-100 text-gray-600 hover:bg-gray-200"
             }`}
           >
@@ -144,7 +190,7 @@ export default function LoginPage() {
             onClick={() => setIsSignUp(true)}
             className={`flex-1 py-2 px-4 rounded-lg font-medium transition-colors ${
               isSignUp
-                ? "bg-indigo-600 text-white"
+                ? "bg-gradient-to-r from-teal-500 to-cyan-500 text-white"
                 : "bg-gray-100 text-gray-600 hover:bg-gray-200"
             }`}
           >
@@ -165,7 +211,7 @@ export default function LoginPage() {
                 value={loginData.username}
                 onChange={(e) => setLoginData({ ...loginData, username: e.target.value })}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all outline-none"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
                 placeholder="Enter your username or email"
               />
             </div>
@@ -180,7 +226,7 @@ export default function LoginPage() {
                 value={loginData.password}
                 onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all outline-none"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
                 placeholder="Enter your password"
               />
             </div>
@@ -188,7 +234,7 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={handleLogin}
-              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+              className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
             >
               Sign In
             </button>
@@ -209,7 +255,7 @@ export default function LoginPage() {
                   value={signUpData.fullName}
                   onChange={(e) => setSignUpData({ ...signUpData, fullName: e.target.value })}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all outline-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
                   placeholder="First & Last Name"
                 />
               </div>
@@ -224,7 +270,7 @@ export default function LoginPage() {
                   value={signUpData.email}
                   onChange={(e) => setSignUpData({ ...signUpData, email: e.target.value })}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all outline-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
                   placeholder="name@clinic.com"
                 />
               </div>
@@ -241,7 +287,7 @@ export default function LoginPage() {
                   value={signUpData.password}
                   onChange={handlePasswordChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all outline-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
                   placeholder="Create a password"
                 />
                 {signUpData.password && (
@@ -263,7 +309,7 @@ export default function LoginPage() {
                   value={signUpData.confirmPassword}
                   onChange={(e) => setSignUpData({ ...signUpData, confirmPassword: e.target.value })}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all outline-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
                   placeholder="Confirm password"
                 />
               </div>
@@ -279,7 +325,7 @@ export default function LoginPage() {
                 value={signUpData.phone}
                 onChange={(e) => setSignUpData({ ...signUpData, phone: e.target.value })}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all outline-none"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
                 placeholder="(555) 123-4567"
               />
             </div>
@@ -293,7 +339,7 @@ export default function LoginPage() {
                   id="role"
                   value={signUpData.role}
                   onChange={(e) => setSignUpData({ ...signUpData, role: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all outline-none bg-white"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none bg-white"
                 >
                   <option value="physician">Physician</option>
                   <option value="labtech">Lab Technician</option>
@@ -312,7 +358,7 @@ export default function LoginPage() {
                   value={signUpData.specialty}
                   onChange={(e) => setSignUpData({ ...signUpData, specialty: e.target.value })}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all outline-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
                   placeholder="e.g., Cardiology"
                 />
               </div>
@@ -328,7 +374,7 @@ export default function LoginPage() {
                 value={signUpData.facilityName}
                 onChange={(e) => setSignUpData({ ...signUpData, facilityName: e.target.value })}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all outline-none"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
                 placeholder="Hospital or Clinic Name"
               />
             </div>
@@ -344,7 +390,7 @@ export default function LoginPage() {
                   value={signUpData.city}
                   onChange={(e) => setSignUpData({ ...signUpData, city: e.target.value })}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all outline-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
                   placeholder="City"
                 />
               </div>
@@ -359,7 +405,7 @@ export default function LoginPage() {
                   value={signUpData.state}
                   onChange={(e) => setSignUpData({ ...signUpData, state: e.target.value })}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all outline-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
                   placeholder="State"
                 />
               </div>
@@ -374,7 +420,7 @@ export default function LoginPage() {
                   value={signUpData.zip}
                   onChange={(e) => setSignUpData({ ...signUpData, zip: e.target.value })}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all outline-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
                   placeholder="ZIP"
                 />
               </div>
@@ -390,7 +436,7 @@ export default function LoginPage() {
                   type="text"
                   value={signUpData.licenseNumber}
                   onChange={(e) => setSignUpData({ ...signUpData, licenseNumber: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all outline-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
                   placeholder="NPI or equivalent"
                 />
               </div>
@@ -404,7 +450,7 @@ export default function LoginPage() {
                   type="number"
                   value={signUpData.yearsInPractice}
                   onChange={(e) => setSignUpData({ ...signUpData, yearsInPractice: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all outline-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
                   placeholder="e.g., 5"
                 />
               </div>
@@ -413,7 +459,7 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={handleSignUp}
-              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+              className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
             >
               Create Account
             </button>
@@ -423,7 +469,7 @@ export default function LoginPage() {
         {/* Footer */}
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-500">
-            Need help? <a href="#" className="text-indigo-600 hover:text-indigo-700 font-medium">Contact Support</a>
+            Need help? <a href="#" className="text-teal-600 hover:text-teal-700 font-medium">Contact Support</a>
           </p>
         </div>
       </div>

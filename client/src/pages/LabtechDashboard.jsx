@@ -1,23 +1,18 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
-  Activity,
   Upload,
   FileText,
-  AlertCircle,
   CheckCircle,
   Clock,
+  Activity,
   TrendingUp,
-  BarChart3,
-  Moon,
-  Sun,
-  Brain,
-  FileCheck,
-  Zap,
   Eye,
+  AlertCircle,
 } from "lucide-react";
 
 const LabTechDashboard = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate();
   const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [currentStep, setCurrentStep] = useState("");
@@ -107,122 +102,106 @@ const LabTechDashboard = () => {
     }
   };
 
-  const bgClass = darkMode
-    ? "bg-gray-900"
-    : "bg-gradient-to-br from-purple-50 via-blue-50 to-white";
-  const cardBg = darkMode ? "bg-gray-800" : "bg-white";
-  const textPrimary = darkMode ? "text-white" : "text-gray-900";
-  const textSecondary = darkMode ? "text-gray-300" : "text-gray-600";
-  const borderColor = darkMode ? "border-gray-700" : "border-gray-200";
-
   return (
-    <div className={`min-h-screen ${bgClass} transition-colors duration-300`}>
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-yellow-100">
       {/* Header */}
-      <header className={`${cardBg} shadow-lg border-b ${borderColor}`}>
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
-              <Brain className="w-6 h-6 text-white" />
-            </div>
+      <div className="bg-white shadow-sm border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
             <div>
-              <h1 className={`text-2xl font-bold ${textPrimary}`}>
-                Diagnosync
+              <h1 className="text-2xl font-bold text-gray-800">
+                Lab Technician Portal
               </h1>
-              <p className={`text-xs ${textSecondary}`}>
-                AI Clinical Intelligence
+              <p className="text-sm text-gray-500 mt-1">
+                Upload and analyze medical documents
               </p>
             </div>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <span className={`text-sm ${textSecondary}`}>
-              Lab Technician Portal
-            </span>
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className={`p-2 rounded-lg ${
-                darkMode ? "bg-gray-700" : "bg-gray-100"
-              } hover:scale-110 transition-transform`}
-            >
-              {darkMode ? (
-                <Sun className="w-5 h-5 text-yellow-400" />
-              ) : (
-                <Moon className="w-5 h-5 text-gray-600" />
-              )}
-            </button>
+            <div className="flex items-center gap-4">
+              <span className="text-sm text-gray-600">Lab Tech User</span>
+              <button
+                onClick={() => navigate("/")}
+                className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg font-medium transition-colors"
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </div>
-      </header>
+      </div>
 
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <StatCard
-            icon={<FileText className="w-6 h-6" />}
-            title="Total Analyses"
-            value="2,847"
-            trend="+12%"
-            color="purple"
-            darkMode={darkMode}
-          />
-          <StatCard
-            icon={<Activity className="w-6 h-6" />}
-            title="Physician Review Queue"
-            value="7"
-            trend="-3 today"
-            color="blue"
-            darkMode={darkMode}
-          />
-          <StatCard
-            icon={<TrendingUp className="w-6 h-6" />}
-            title="AI Confidence Avg"
-            value="89.2%"
-            trend="+2.4%"
-            color="green"
-            darkMode={darkMode}
-          />
-          <StatCard
-            icon={<CheckCircle className="w-6 h-6" />}
-            title="Patients Notified"
-            value="12"
-            trend="Today"
-            color="indigo"
-            darkMode={darkMode}
-          />
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+            <div className="flex items-center justify-between mb-2">
+              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
+                <FileText className="w-6 h-6 text-indigo-600" />
+              </div>
+            </div>
+            <h3 className="text-3xl font-bold text-gray-800">2,847</h3>
+            <p className="text-sm text-gray-500 mt-1">Total Analyses</p>
+            <span className="text-xs text-green-600 font-medium">+12% this month</span>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+            <div className="flex items-center justify-between mb-2">
+              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                <Activity className="w-6 h-6 text-orange-600" />
+              </div>
+            </div>
+            <h3 className="text-3xl font-bold text-gray-800">7</h3>
+            <p className="text-sm text-gray-500 mt-1">Physician Review Queue</p>
+            <span className="text-xs text-blue-600 font-medium">-3 today</span>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+            <div className="flex items-center justify-between mb-2">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                <TrendingUp className="w-6 h-6 text-green-600" />
+              </div>
+            </div>
+            <h3 className="text-3xl font-bold text-gray-800">89.2%</h3>
+            <p className="text-sm text-gray-500 mt-1">AI Confidence Avg</p>
+            <span className="text-xs text-green-600 font-medium">+2.4%</span>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+            <div className="flex items-center justify-between mb-2">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <CheckCircle className="w-6 h-6 text-blue-600" />
+              </div>
+            </div>
+            <h3 className="text-3xl font-bold text-gray-800">12</h3>
+            <p className="text-sm text-gray-500 mt-1">Patients Notified</p>
+            <span className="text-xs text-blue-600 font-medium">Today</span>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Upload Section */}
-          <div
-            className={`lg:col-span-2 ${cardBg} rounded-xl shadow-lg p-6 border ${borderColor}`}
-          >
+          <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
             <div className="flex items-center gap-2 mb-6">
-              <Upload className={`w-5 h-5 ${textPrimary}`} />
-              <h2 className={`text-xl font-semibold ${textPrimary}`}>
+              <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                <Upload className="w-5 h-5 text-indigo-600" />
+              </div>
+              <h2 className="text-xl font-bold text-gray-800">
                 Upload Medical Documents
               </h2>
             </div>
 
             {!uploading ? (
               <div>
-                <div
-                  className={`border-2 border-dashed rounded-xl p-8 text-center ${
-                    darkMode
-                      ? "border-gray-600 bg-gray-700/30"
-                      : "border-purple-200 bg-purple-50"
-                  }`}
-                >
-                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full flex items-center justify-center">
-                    <Upload className="w-8 h-8 text-white" />
+                <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center bg-gray-50">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-indigo-100 rounded-full flex items-center justify-center">
+                    <Upload className="w-8 h-8 text-indigo-600" />
                   </div>
-                  <p className={`text-lg font-medium mb-2 ${textPrimary}`}>
+                  <p className="text-lg font-medium text-gray-800 mb-2">
                     {selectedFile
                       ? selectedFile.name
                       : "Drag and drop or click to upload"}
                   </p>
-                  <p className={`text-sm ${textSecondary} mb-4`}>
-                    Supports: MRI, CT, X-Ray, Blood Work, Biopsy reports (PDF,
-                    DICOM, JPG)
+                  <p className="text-sm text-gray-500 mb-4">
+                    Supports: MRI, CT, X-Ray, Blood Work, Biopsy reports (PDF, DICOM, JPG)
                   </p>
                   <input
                     type="file"
@@ -233,7 +212,7 @@ const LabTechDashboard = () => {
                   />
                   <label
                     htmlFor="fileUpload"
-                    className="inline-block px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-medium cursor-pointer hover:shadow-lg transition-all"
+                    className="inline-block px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium cursor-pointer transition-colors shadow-md"
                   >
                     Choose File
                   </label>
@@ -242,46 +221,33 @@ const LabTechDashboard = () => {
                 {selectedFile && (
                   <button
                     onClick={simulateUpload}
-                    className="w-full mt-4 px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg font-medium hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                    className="w-full mt-4 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors shadow-md"
                   >
-                    <Zap className="w-5 h-5" />
                     Start AI Analysis
                   </button>
                 )}
               </div>
             ) : (
               <div className="space-y-4">
-                <div
-                  className={`p-4 rounded-lg ${
-                    darkMode ? "bg-blue-900/30" : "bg-blue-50"
-                  } border-l-4 border-blue-600`}
-                >
+                <div className="p-4 rounded-lg bg-blue-50 border border-blue-200">
                   <div className="flex items-center gap-2 mb-2">
                     <Activity className="w-5 h-5 text-blue-600 animate-pulse" />
-                    <span className={`font-medium ${textPrimary}`}>
+                    <span className="font-medium text-gray-800">
                       {currentStep}
                     </span>
                   </div>
-                  <div
-                    className={`w-full h-2 rounded-full ${
-                      darkMode ? "bg-gray-700" : "bg-gray-200"
-                    } overflow-hidden`}
-                  >
+                  <div className="w-full h-2 rounded-full bg-gray-200 overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-purple-600 to-blue-600 transition-all duration-300"
+                      className="h-full bg-indigo-600 transition-all duration-300"
                       style={{ width: `${uploadProgress}%` }}
                     />
                   </div>
-                  <p className={`text-sm ${textSecondary} mt-2`}>
+                  <p className="text-sm text-gray-600 mt-2">
                     {Math.round(uploadProgress)}% Complete
                   </p>
                 </div>
 
-                <div
-                  className={`grid grid-cols-2 gap-3 ${
-                    darkMode ? "text-gray-300" : "text-gray-600"
-                  } text-sm`}
-                >
+                <div className="grid grid-cols-2 gap-3 text-gray-600 text-sm">
                   {steps.map((step, idx) => (
                     <div key={idx} className="flex items-center gap-2">
                       {idx < steps.indexOf(currentStep) ? (
@@ -293,7 +259,7 @@ const LabTechDashboard = () => {
                       )}
                       <span
                         className={
-                          idx <= steps.indexOf(currentStep) ? "font-medium" : ""
+                          idx <= steps.indexOf(currentStep) ? "font-medium text-gray-800" : ""
                         }
                       >
                         {step}
@@ -306,62 +272,37 @@ const LabTechDashboard = () => {
           </div>
 
           {/* Quick Stats Chart */}
-          <div
-            className={`${cardBg} rounded-xl shadow-lg p-6 border ${borderColor}`}
-          >
+          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
             <div className="flex items-center gap-2 mb-6">
-              <BarChart3 className={`w-5 h-5 ${textPrimary}`} />
-              <h2 className={`text-xl font-semibold ${textPrimary}`}>
+              <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                <Activity className="w-5 h-5 text-indigo-600" />
+              </div>
+              <h2 className="text-xl font-bold text-gray-800">
                 Today's Activity
               </h2>
             </div>
             <div className="space-y-4">
-              <ChartBar
-                label="Blood Work"
-                value={85}
-                color="red"
-                darkMode={darkMode}
-              />
-              <ChartBar
-                label="MRI Scans"
-                value={62}
-                color="purple"
-                darkMode={darkMode}
-              />
-              <ChartBar
-                label="CT Scans"
-                value={45}
-                color="blue"
-                darkMode={darkMode}
-              />
-              <ChartBar
-                label="X-Rays"
-                value={38}
-                color="green"
-                darkMode={darkMode}
-              />
-              <ChartBar
-                label="Biopsies"
-                value={22}
-                color="orange"
-                darkMode={darkMode}
-              />
+              <ChartBar label="Blood Work" value={85} color="red" />
+              <ChartBar label="MRI Scans" value={62} color="indigo" />
+              <ChartBar label="CT Scans" value={45} color="blue" />
+              <ChartBar label="X-Rays" value={38} color="green" />
+              <ChartBar label="Biopsies" value={22} color="orange" />
             </div>
           </div>
         </div>
 
         {/* Recent Documents */}
-        <div
-          className={`mt-8 ${cardBg} rounded-xl shadow-lg p-6 border ${borderColor}`}
-        >
+        <div className="mt-8 bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2">
-              <FileCheck className={`w-5 h-5 ${textPrimary}`} />
-              <h2 className={`text-xl font-semibold ${textPrimary}`}>
+              <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                <FileText className="w-5 h-5 text-indigo-600" />
+              </div>
+              <h2 className="text-xl font-bold text-gray-800">
                 Recent Analyses
               </h2>
             </div>
-            <button className="text-sm text-purple-600 hover:text-purple-700 font-medium flex items-center gap-1">
+            <button className="text-sm text-indigo-600 hover:text-indigo-700 font-medium flex items-center gap-1 transition-colors">
               View All <Eye className="w-4 h-4" />
             </button>
           </div>
@@ -369,39 +310,23 @@ const LabTechDashboard = () => {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr
-                  className={`${
-                    darkMode ? "bg-gray-700" : "bg-gray-50"
-                  } text-left`}
-                >
-                  <th
-                    className={`px-4 py-3 text-sm font-semibold ${textPrimary}`}
-                  >
+                <tr className="bg-gray-50 text-left border-b border-gray-200">
+                  <th className="px-4 py-3 text-sm font-semibold text-gray-700">
                     Document
                   </th>
-                  <th
-                    className={`px-4 py-3 text-sm font-semibold ${textPrimary}`}
-                  >
+                  <th className="px-4 py-3 text-sm font-semibold text-gray-700">
                     Type
                   </th>
-                  <th
-                    className={`px-4 py-3 text-sm font-semibold ${textPrimary}`}
-                  >
+                  <th className="px-4 py-3 text-sm font-semibold text-gray-700">
                     Status
                   </th>
-                  <th
-                    className={`px-4 py-3 text-sm font-semibold ${textPrimary}`}
-                  >
+                  <th className="px-4 py-3 text-sm font-semibold text-gray-700">
                     Confidence
                   </th>
-                  <th
-                    className={`px-4 py-3 text-sm font-semibold ${textPrimary}`}
-                  >
+                  <th className="px-4 py-3 text-sm font-semibold text-gray-700">
                     Date
                   </th>
-                  <th
-                    className={`px-4 py-3 text-sm font-semibold ${textPrimary}`}
-                  >
+                  <th className="px-4 py-3 text-sm font-semibold text-gray-700">
                     Urgency
                   </th>
                 </tr>
@@ -410,29 +335,23 @@ const LabTechDashboard = () => {
                 {uploadedDocs.map((doc) => (
                   <tr
                     key={doc.id}
-                    className={`border-b ${borderColor} hover:${
-                      darkMode ? "bg-gray-700" : "bg-gray-50"
-                    } transition-colors`}
+                    className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
                   >
-                    <td className={`px-4 py-3 ${textPrimary}`}>
+                    <td className="px-4 py-3 text-gray-800">
                       <div className="flex items-center gap-2">
-                        <FileText className="w-4 h-4 text-purple-600" />
+                        <FileText className="w-4 h-4 text-indigo-600" />
                         <span className="text-sm font-medium">{doc.name}</span>
                       </div>
                     </td>
-                    <td className={`px-4 py-3 text-sm ${textSecondary}`}>
+                    <td className="px-4 py-3 text-sm text-gray-600">
                       {doc.type}
                     </td>
                     <td className="px-4 py-3">
-                      <StatusBadge status={doc.status} darkMode={darkMode} />
+                      <StatusBadge status={doc.status} />
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-2">
-                        <div
-                          className={`flex-1 h-2 rounded-full ${
-                            darkMode ? "bg-gray-700" : "bg-gray-200"
-                          } overflow-hidden`}
-                        >
+                        <div className="flex-1 h-2 rounded-full bg-gray-200 overflow-hidden">
                           <div
                             className={`h-full ${
                               doc.confidence >= 90
@@ -444,12 +363,12 @@ const LabTechDashboard = () => {
                             style={{ width: `${doc.confidence}%` }}
                           />
                         </div>
-                        <span className={`text-sm font-medium ${textPrimary}`}>
+                        <span className="text-sm font-medium text-gray-800">
                           {doc.confidence}%
                         </span>
                       </div>
                     </td>
-                    <td className={`px-4 py-3 text-sm ${textSecondary}`}>
+                    <td className="px-4 py-3 text-sm text-gray-600">
                       {doc.date}
                     </td>
                     <td className="px-4 py-3">
@@ -466,54 +385,10 @@ const LabTechDashboard = () => {
   );
 };
 
-const StatCard = ({ icon, title, value, trend, color, darkMode }) => {
-  const colors = {
-    purple: "from-purple-600 to-purple-700",
-    blue: "from-blue-600 to-blue-700",
-    green: "from-green-600 to-green-700",
-    indigo: "from-indigo-600 to-indigo-700",
-  };
-
-  return (
-    <div
-      className={`${
-        darkMode ? "bg-gray-800" : "bg-white"
-      } rounded-xl shadow-lg p-6 border ${
-        darkMode ? "border-gray-700" : "border-gray-200"
-      } hover:shadow-xl transition-shadow`}
-    >
-      <div className="flex items-start justify-between">
-        <div
-          className={`w-12 h-12 rounded-lg bg-gradient-to-br ${colors[color]} flex items-center justify-center text-white`}
-        >
-          {icon}
-        </div>
-        <span
-          className={`text-xs font-medium ${
-            trend.includes("+") ? "text-green-600" : "text-blue-600"
-          }`}
-        >
-          {trend}
-        </span>
-      </div>
-      <h3
-        className={`mt-4 text-2xl font-bold ${
-          darkMode ? "text-white" : "text-gray-900"
-        }`}
-      >
-        {value}
-      </h3>
-      <p className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-        {title}
-      </p>
-    </div>
-  );
-};
-
-const ChartBar = ({ label, value, color, darkMode }) => {
+const ChartBar = ({ label, value, color }) => {
   const colors = {
     red: "bg-red-500",
-    purple: "bg-purple-500",
+    indigo: "bg-indigo-500",
     blue: "bg-blue-500",
     green: "bg-green-500",
     orange: "bg-orange-500",
@@ -522,24 +397,10 @@ const ChartBar = ({ label, value, color, darkMode }) => {
   return (
     <div>
       <div className="flex items-center justify-between mb-1">
-        <span
-          className={`text-sm ${darkMode ? "text-gray-300" : "text-gray-700"}`}
-        >
-          {label}
-        </span>
-        <span
-          className={`text-sm font-medium ${
-            darkMode ? "text-white" : "text-gray-900"
-          }`}
-        >
-          {value}
-        </span>
+        <span className="text-sm text-gray-700">{label}</span>
+        <span className="text-sm font-medium text-gray-800">{value}</span>
       </div>
-      <div
-        className={`w-full h-2 rounded-full ${
-          darkMode ? "bg-gray-700" : "bg-gray-200"
-        } overflow-hidden`}
-      >
+      <div className="w-full h-2 rounded-full bg-gray-200 overflow-hidden">
         <div
           className={`h-full ${colors[color]} transition-all duration-500`}
           style={{ width: `${value}%` }}
@@ -549,20 +410,20 @@ const ChartBar = ({ label, value, color, darkMode }) => {
   );
 };
 
-const StatusBadge = ({ status, darkMode }) => {
+const StatusBadge = ({ status }) => {
   const styles = {
     completed: {
-      bg: darkMode ? "bg-green-900/30" : "bg-green-100",
+      bg: "bg-green-100",
       text: "text-green-700",
       label: "Completed",
     },
     physician_review: {
-      bg: darkMode ? "bg-yellow-900/30" : "bg-yellow-100",
+      bg: "bg-yellow-100",
       text: "text-yellow-700",
       label: "Physician Review",
     },
     pending: {
-      bg: darkMode ? "bg-blue-900/30" : "bg-blue-100",
+      bg: "bg-blue-100",
       text: "text-blue-700",
       label: "Pending",
     },
